@@ -83,15 +83,40 @@ client.connect()
         client.close();
     })*/
 
-    var query = { zip: "11368" }
+    /*var query = { zip: "11368" }
     dbo.collection('uscensus').find(query)
         .toArray()
         .then(items => {
             console.log(`Successfully found ${items.legnth} documents.`);
             console.log(items);
             client.close();
-        })
+        })*/
+    
+    /*var myquery = {state: 'CA'}
+    dbo.collection('uscensus').find(myquery)
+        .toArray()
+        .then(items => {
+            console.log(`Successfully found ${items.legnth} documents.`);
+            console.log(items);
+            client.close();
+        })*/
+    
+    /*var myquery = {state: 'AK'}
+    var newvalues = {$set: {zip: '38910', age: '46'}};
+    dbo.collection('uscensus').updateOne(myquery,newvalues).then(() => {
+        console.log('1 document updated');
+        client.close();
+    })*/
 
+    var sorter = {state: 1}
+    dbo.collection('uscensus').find()
+        .sort(sorter)
+        .toArray()
+        .then(item => {
+            console.log(`Successfully sorted ${item.legnth} documents.`)
+            console.log(items);
+            client.close();
+        })
     .catch((error) => {
       "Failed to Connect", error;
     });
